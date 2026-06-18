@@ -15,7 +15,11 @@ GPyOpt==1.2.6
 imageio==2.9.0
 jedi==0.17.0
 jupyter==1.0.0
+# Match TensorFlow 2.12.x while keeping NumPy 1.23.5.
+keras==2.12.0
 kiwisolver==1.3.1
+# ImportError: lxml.html.clean module is now a separate project lxml_html_clean.
+lxml_html_clean==0.4.3
 lpips==0.1.3
 matplotlib==3.4.2
 mistune==0.8.4
@@ -33,7 +37,8 @@ opencv-python==4.5.3.56
 opt-einsum==3.1.0
 paramz==0.9.5
 Pillow==8.2.0
-protobuf==3.14.0
+# TensorFlow 2.12 needs a newer protobuf than the original export.
+protobuf==3.20.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 PyJWT==1.7.1
@@ -55,6 +60,9 @@ scipy==1.9.3
 # Removed: old Qt/SIP pin is not available from pip for this Python/platform combo.
 # sip==4.19.13
 six==1.15.0
+# TensorFlow 2.6 requires numpy~=1.19.2, which conflicts with the current working scientific stack.
+# TensorFlow 2.12 is a better fit for Python 3.9 + NumPy 1.23.x.
+tensorflow==2.12.0
 tensorboard-plugin-wit==1.6.0.post2
 termcolor==1.1.0
 terminado==0.9.4
