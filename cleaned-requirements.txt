@@ -14,7 +14,11 @@ GPy==1.10.0
 GPyOpt==1.2.6
 imageio==2.9.0
 jedi==0.17.0
-jupyter==1.0.0
+# Removed the old `jupyter==1.0.0` meta-package. It pulls a mixed classic Notebook stack
+# and can conflict with the explicit JupyterLab/Jupyter Server pins below.
+# jupyter==1.0.0
+notebook==6.5.7
+ipykernel==6.29.5
 # Use an older JupyterLab 3.x stack compatible with jsonschema 3.2.0.
 # Newer JupyterLab 3.6.x pulls jupyterlab-server >=2.19, which requires jsonschema >=4.17.
 jupyterlab==3.1.18
@@ -51,7 +55,8 @@ PyJWT==1.7.1
 PySocks==1.7.1
 PyWavelets==1.1.1
 PyYAML==5.3.1
-pyzmq==20.0.0
+# Bumped for ipykernel 6.29.x compatibility; this is Jupyter/kernel plumbing, not research logic.
+pyzmq==25.1.2
 # Bumped because newer qtconsole releases require QtPy >=2.x.
 QtPy==2.0.1
 qtconsole==5.4.3
