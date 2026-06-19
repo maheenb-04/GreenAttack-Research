@@ -44,7 +44,7 @@ docker --version
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/riker1/CISE-QE-DBA
 cd CISE-QE-DBA
 ```
 
