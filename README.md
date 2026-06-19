@@ -2,6 +2,8 @@
 
 QE-DBA is a research project that explores query-efficient decision-based adversarial attacks using Bayesian Optimization. The goal is to generate adversarial examples that cause a classifier to misclassify an image while minimizing the perceptual difference between the original and perturbed images.
 
+---
+
 ## Overview
 
 This repository contains:
@@ -14,27 +16,87 @@ This repository contains:
 
 ---
 
+## Quick Start
+
+The fastest way to get started is with Docker.
+
+```bash
+git clone https://github.com/riker1/CISE-QE-DBA
+cd CISE-QE-DBA
+
+docker buildx build \
+  --platform linux/amd64 \
+  -t cise-qe-dba-old .
+
+docker run \
+  --platform linux/amd64 \
+  --rm \
+  -it \
+  -p 8888:8888 \
+  -v "$PWD:/workspace" \
+  -w /workspace \
+  cise-qe-dba-old
+```
+
+Then open:
+
+```text
+http://localhost:8888/tree
+```
+
+and launch:
+
+```text
+Demo.ipynb
+```
+
+---
+
 ## Recommended Setup (Docker)
 
 The easiest and most reliable way to run this project is with Docker.
 
-The original project dependencies are several years old and can be difficult to install on modern operating systems. A Docker image is provided to create a reproducible environment.
+The original project dependencies are several years old and can be difficult to install on modern operating systems. The provided Docker image recreates a compatible environment and eliminates the need to manually resolve legacy TensorFlow, OpenCV, GPy, and scientific computing dependencies.
 
-### Prerequisites
+### Why Docker?
+
+This project was originally developed using a machine learning software stack that has changed significantly over time.
+
+Modern operating systems, Python versions, and package repositories no longer provide many of the exact library versions originally used by the project. As a result, attempting to install dependencies directly on a host system often leads to version conflicts and build failures.
+
+The provided Docker image recreates a compatible Linux environment using a carefully curated dependency stack that allows the original experiments to run consistently on:
+
+- Linux
+- Windows
+- Intel-based macOS systems
+- Apple Silicon (M1/M2/M3/M4) Macs
+
+The image is built for the `linux/amd64` platform to maximize compatibility with older machine learning libraries and research dependencies.
+
+---
+
+## Prerequisites
 
 Install one of the following:
 
-- Docker Desktop (Windows/macOS)
-- Docker Engine (Linux)
+### Windows / macOS
 
-#### Get Docker:
+- Docker Desktop
 
-- https://docs.docker.com/get-started/introduction/get-docker-desktop/
+Download:
+
+https://docs.docker.com/get-started/introduction/get-docker-desktop/
+
+### Linux
+
+- Docker Engine
+- Docker Buildx
 
 Verify Docker is working:
 
 ```bash
 docker --version
+docker buildx version
 ```
 
 ---
@@ -48,7 +110,7 @@ git clone https://github.com/riker1/CISE-QE-DBA
 cd CISE-QE-DBA
 ```
 
-Build the image:
+Build the Docker image:
 
 ```bash
 docker buildx build \
@@ -56,13 +118,13 @@ docker buildx build \
   -t cise-qe-dba-old .
 ```
 
-The build may take several minutes the first time.
+The first build may take several minutes because Docker must download the base image and install all project dependencies.
 
 ---
 
 ## Run the Environment
 
-Start the container and launch Jupyter Notebook:
+Start the container:
 
 ```bash
 docker run \
@@ -75,7 +137,7 @@ docker run \
   cise-qe-dba-old
 ```
 
-Once the container starts, Jupyter Notebook will automatically launch.
+The container automatically launches Jupyter Notebook.
 
 Open your browser and navigate to:
 
@@ -83,7 +145,27 @@ Open your browser and navigate to:
 http://localhost:8888/tree
 ```
 
-No authentication token is required.
+No authentication token or password is required.
+
+---
+
+## Expected Startup Output
+
+When the container starts successfully, you should see output similar to:
+
+```text
+Jupyter Notebook 6.x is running at:
+http://localhost:8888/
+```
+
+TensorFlow may display messages such as:
+
+```text
+Could not find CUDA drivers on your machine
+TF-TRT Warning: Could not find TensorRT
+```
+
+These messages are expected when running on systems without NVIDIA GPUs and can safely be ignored.
 
 ---
 
@@ -96,6 +178,8 @@ After Jupyter loads:
 3. Experiment with configuration settings and attack parameters
 4. Review generated adversarial examples and evaluation metrics
 
+The notebook provides the primary implementation of the BO-DBA attack and demonstrates how Bayesian Optimization can be used to generate query-efficient adversarial examples.
+
 ---
 
 ## Dataset Preparation
@@ -104,7 +188,7 @@ Download the ImageNet validation dataset:
 
 https://academictorrents.com/details/5d6d0df7ed81efd49ca99ea4737e0ae5e3a5f2e5
 
-Place the archive in:
+Place the downloaded archive into:
 
 ```text
 DataSet/
@@ -127,12 +211,12 @@ Classifier settings are controlled through:
 Configuration.yaml
 ```
 
-Supported models include:
+Supported classifier options include:
 
 - Inception
 - ResNet
 
-Additional configuration examples are available in:
+Additional configuration examples and attack parameters can be found in:
 
 ```text
 Demo.ipynb
@@ -142,13 +226,23 @@ Demo.ipynb
 
 ## Evaluation Experiments
 
-Additional evaluation notebooks can be found under:
+Additional evaluation notebooks are located in:
 
 ```text
 Evaluation/
 ```
 
-These notebooks compare BO-DBA against other adversarial attack approaches and provide performance measurements.
+These notebooks compare BO-DBA against alternative adversarial attack techniques and provide performance measurements across different attack scenarios.
+
+---
+
+## Legacy Manual Installation
+
+A historical `requirements.txt` file is included for reference.
+
+Direct installation on a host operating system is not recommended because many of the original package versions have been deprecated, replaced, or removed from modern package repositories.
+
+For reproducibility and ease of use, the Docker-based workflow described above is the recommended installation method.
 
 ---
 
@@ -158,4 +252,6 @@ These notebooks compare BO-DBA against other adversarial attack approaches and p
 - Zhensheng Sun
 - Nathan McDermott
 
-Docker modernization and dependency restoration by contributors to this repository.
+## Project Preservation Notes
+
+Docker-based modernization, dependency restoration, and Apple Silicon compatibility updates were added to preserve reproducibility of the original research environment and allow the experiments to continue running on modern hardware and operating systems.
