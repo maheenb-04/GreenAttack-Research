@@ -18,7 +18,14 @@ jedi==0.17.0
 # and can conflict with the explicit JupyterLab/Jupyter Server pins below.
 # jupyter==1.0.0
 notebook==6.5.7
-ipykernel==6.29.5
+# Use an older Notebook 6-era kernel stack. Newer ipykernel 6.29.x caused kernel_info timeouts.
+ipykernel==5.5.6
+ipython==7.34.0
+jupyter-client==6.1.12
+jupyter-core==4.12.0
+# Older console version compatible with jupyter-client 6.x.
+jupyter-console==6.2.0
+tornado==6.1
 # Use an older JupyterLab 3.x stack compatible with jsonschema 3.2.0.
 # Newer JupyterLab 3.6.x pulls jupyterlab-server >=2.19, which requires jsonschema >=4.17.
 jupyterlab==3.1.18
@@ -55,8 +62,8 @@ PyJWT==1.7.1
 PySocks==1.7.1
 PyWavelets==1.1.1
 PyYAML==5.3.1
-# Bumped for ipykernel 6.29.x compatibility; this is Jupyter/kernel plumbing, not research logic.
-pyzmq==25.1.2
+# Keep older pyzmq for the Notebook 6-era kernel stack.
+pyzmq==20.0.0
 # Bumped because newer qtconsole releases require QtPy >=2.x.
 QtPy==2.0.1
 qtconsole==5.4.3
