@@ -10,7 +10,7 @@ nb = nbformat.read(SOURCE_NOTEBOOK, as_version=4)
 
 client = NotebookClient(
     nb,
-    timeout=60,
+    timeout=300,
     iopub_timeout=300,
     kernel_name="python3",
 )
