@@ -1,4 +1,27 @@
-uv.lock
-.ipynb_checkpoints/
+# Debugging artifacts
+debug_execute.py
+debug_import_stack.py
+tf_kernel_test.py
+
+# Generated notebooks
+Demo.executed.ipynb
+Demo.full.executed.ipynb
 Untitled.ipynb
-DataSet/**/*.JPEG
+
+# Local docker exports
+*.tar
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+uv.lock
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Exclude the dataset images
+DataSet/**/**/*.JPEG
+
