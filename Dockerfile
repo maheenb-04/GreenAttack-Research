@@ -2,8 +2,6 @@ FROM python:3.9-bullseye
 
 WORKDIR /workspace
 
-# Headless/container-safe runtime defaults.
-# Agg prevents matplotlib.pyplot from trying to use an interactive GUI backend.
 ENV MPLBACKEND=Agg
 ENV TF_CPP_MIN_LOG_LEVEL=3
 ENV CUDA_VISIBLE_DEVICES=-1
@@ -23,13 +21,9 @@ RUN apt-get update && apt-get install -y \
 
 COPY cleaned-requirements.txt .
 
-RUN python -m pip install --upgrade "pip<24" setuptools wheel
+RUN python -m pip install --upgrade pip setuptools wheel
 RUN python -m pip install -r cleaned-requirements.txt
 
-# Start notebook kernels through a small launcher that preloads TensorFlow and
-# matplotlib before ipykernel begins processing cell execution requests. This
-# avoids hangs seen when importing TensorFlow/Keras or pyplot from inside an
-# active ipykernel request under linux/amd64 emulation.
 RUN cat > /usr/local/bin/tf_kernel_launcher.py <<'PY'
 import os
 
@@ -52,6 +46,7 @@ IPKernelApp.launch_instance()
 PY
 
 RUN chmod +x /usr/local/bin/tf_kernel_launcher.py \
+    && mkdir -p /usr/local/share/jupyter/kernels/python3 \
     && cat > /usr/local/share/jupyter/kernels/python3/kernel.json <<'JSON'
 {
   "argv": [
