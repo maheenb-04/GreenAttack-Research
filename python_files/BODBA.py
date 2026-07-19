@@ -8,7 +8,8 @@ import noise as ns
 import cv2
 from tqdm.notebook import tqdm
 from python_files.Util import millis, mod
-
+from codecarbon import EmissionsTracker
+import time
 
 
 def SAVE(fp, input):
@@ -235,6 +236,15 @@ class preddifference:
 
 
 def bayesian_attack(image, max_query, init_query=5, noise='perlin', max_norm=16, constraint='l2'):
+    tracker = EmissionsTracker(
+    log_level='error',
+    save_to_file=False,
+    save_to_api=False,
+    save_to_logger=False
+)
+    tracker.start()
+    start_time = time.time()
+    
     if noise == 'perlin':
         bounds = [{'name': 'wavelength', 'type': 'continuous', 'domain': (10, 200), 'dimensionality': 1},
                   {'name': 'octave', 'type': 'discrete', 'domain': (1, 2, 3, 4), 'dimensionality': 1},
@@ -287,4 +297,6 @@ def bayesian_attack(image, max_query, init_query=5, noise='perlin', max_norm=16,
             last = image.q
         t2 = millis()
         TimeHistory.append([image.q, t2 - t1])
-    return TimeHistory, optimized.adv
+    emissions = tracker.stop()
+    execution_time = time.time() - start_time
+    return TimeHistory, optimized.adv, emissions, execution_time

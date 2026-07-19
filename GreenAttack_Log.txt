@@ -1,0 +1,12 @@
+GREENATTACK RESEARCH LOG
+========================
+
+2026-07-07: Project started. CodeCarbon installed and tested. All three data files created.
+
+
+2026-17-07: Phase #01 Begins. 
+
+2026-07-17: Observed that most Perlin attacks succeed in 2 queries despite budget of 10. Suggests high efficiency of Perlin noise against InceptionV3.\n")
+
+2026-07-17:Gaussian baseline ran last instead of first. Results unaffected. Will present in correct logical order in final paper.
+
