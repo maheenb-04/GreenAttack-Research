@@ -4,6 +4,13 @@ import random
 import GPyOpt as gy
 #import noise as ns
 import tensorflow as tf
+
+# Python 3.12 + TF 2.15 compatibility fix
+try:
+    from tensorflow import keras
+except ImportError:
+    import keras
+
 #tf.get_logger().setLevel('ERROR')
 #print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
 
