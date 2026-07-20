@@ -10,3 +10,29 @@ GREENATTACK RESEARCH LOG
 
 2026-07-17:Gaussian baseline ran last instead of first. Results unaffected. Will present in correct logical order in final paper.
 
+
+2026-07-19: Restarting Phase 1 from scratch.
+  Reason: queries_used metric was recorded incorrectly in previous runs.
+  Old results archived to GreenAttack_RawResults_ARCHIVE.csv
+  Fix applied: queries_used now uses oriImg_copy.q for accurate count
+  All previous emissions and success rate data was correct.
+
+2026-07-20: FRESH RESTART on PC via Docker.
+  Reason: queries_used was incorrectly recorded as len(timehistory) in previous runs.
+  Fix applied: queries_used now correctly uses oriImg_copy.q
+  Old results archived to GreenAttack_RawResults_ARCHIVE.csv
+  Fresh GreenAttack_RawResults.csv created
+  ImageList rebuilt with random.seed(42) for reproducibility
+  Correct experiment order: Gaussian baseline first then 6 BO noise types
+  Gaussian baseline now running on PC Docker AMD64
+  Preliminary finding: Gaussian emits ~500x less CO2 than Perlin per attack
+
+2026-07-20: Methodology note — Why 10 runs per image.
+  Decision: Running each image 10 times per noise type.
+  Reason: Single runs are insufficient for statistical validity.
+  CPU load, temperature, and BO optimization path vary between runs.
+  10 runs enables calculation of mean, standard deviation,
+  and 95% confidence intervals — minimum for publishable claims.
+  Total experiments per noise type: 100 images x 10 runs = 1,000
+  Total Phase 1 experiments: 7 noise types x 1,000 = 7,000
+  This is consistent with standard ML research methodology.
