@@ -11,6 +11,7 @@ GREENATTACK RESEARCH LOG
 2026-07-17:Gaussian baseline ran last instead of first. Results unaffected. Will present in correct logical order in final paper.
 
 
+<<<<<<< HEAD
 2026-07-19: Restarting Phase 1 from scratch.
   Reason: queries_used metric was recorded incorrectly in previous runs.
   Old results archived to GreenAttack_RawResults_ARCHIVE.csv
@@ -36,3 +37,21 @@ GREENATTACK RESEARCH LOG
   Total experiments per noise type: 100 images x 10 runs = 1,000
   Total Phase 1 experiments: 7 noise types x 1,000 = 7,000
   This is consistent with standard ML research methodology.
+=======
+2026-07-20: Professor meeting update.
+  DECISION: Archive Phase 1 results (queryBudgets=10, InceptionV3 only)
+  These results will be used for comparison analysis in final paper.
+  PLAN: Run final experiment on Google Colab with:
+    - queryBudgets=100
+    - 2 classifiers: InceptionV3 + ResNet50
+  Professor noted: document Colab setup process thoroughly.
+  Paper will address execution differences:
+    - Phase 1 pilot: Mac/PC Docker, queryBudgets=10
+    - Final experiment: Google Colab GPU, queryBudgets=100
+  Next steps:
+    1. Fix Google Colab environment
+    2. Archive Phase 1 results
+    3. Create new recording files for final experiment
+    4. Run final experiment on Colab at queryBudgets=100
+    5. Add ResNet50 as second classifier
+>>>>>>> 429f3f7e294b23254b9e2aa412895ac7fecf05ce
