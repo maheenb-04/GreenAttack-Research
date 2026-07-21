@@ -55,3 +55,10 @@ GREENATTACK RESEARCH LOG
     4. Run final experiment on Colab at queryBudgets=100
     5. Add ResNet50 as second classifier
 >>>>>>> 429f3f7e294b23254b9e2aa412895ac7fecf05ce
+
+2026-07-21 04:56: PRIMARY EXPERIMENT STARTED.
+  Platform: Google Colab GPU T4
+  Query budget: 100
+  Classifiers: InceptionV3 + ResNet50
+  Total planned: 14000 experiments
+  Status: Running successfully
