@@ -26,7 +26,13 @@ from scipy import ndimage
 #tf.test.is_gpu_available()
 
 main_path = './' #path of main folder
-data_path = os.path.join(main_path, "DataSet/ILSVRC2012_img_val") #path of validation data
+import os
+if os.path.exists('/content/drive/MyDrive/GreenAttack/ILSVRC2012_img_val'):
+    data_path = '/content/drive/MyDrive/GreenAttack/ILSVRC2012_img_val'
+elif os.path.exists('./DataSet/ILSVRC2012_img_val'):
+    data_path = './DataSet/ILSVRC2012_img_val'
+else:
+    data_path = '/content/CISE-QE-DBA/DataSet/ILSVRC2012_img_val'
 
 images = {}
 classfiles = os.listdir(data_path)
