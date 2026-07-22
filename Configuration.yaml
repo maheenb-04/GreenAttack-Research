@@ -1,4 +1,4 @@
 main_path: ./
-data_path: ./DataSet/ILSVRC2012_img_val
+data_path: /content/drive/MyDrive/GreenAttack/ILSVRC2012_img_val
 mod: Inception #Option:ResNet, Inception, CIFAR
 #latent_dim: 48

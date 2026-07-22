@@ -2,6 +2,13 @@ import pickle
 import numpy as np
 import colorsys
 import tensorflow as tf
+
+# Python 3.12 + TF 2.15 compatibility fix
+try:
+    from tensorflow import keras
+except ImportError:
+    import keras
+
 from python_files.Util import imagesize, norm
 import GPyOpt as gy
 import noise as ns

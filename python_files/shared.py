@@ -4,6 +4,13 @@ import random
 import GPyOpt as gy
 #import noise as ns
 import tensorflow as tf
+
+# Python 3.12 + TF 2.15 compatibility fix
+try:
+    from tensorflow import keras
+except ImportError:
+    import keras
+
 #tf.get_logger().setLevel('ERROR')
 #print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
 
@@ -19,7 +26,7 @@ from scipy import ndimage
 #tf.test.is_gpu_available()
 
 main_path = './' #path of main folder
-data_path = os.path.join(main_path, "DataSet/ILSVRC2012_img_val") #path of validation data
+data_path = '/content/drive/MyDrive/GreenAttack/ILSVRC2012_img_val'
 
 images = {}
 classfiles = os.listdir(data_path)
