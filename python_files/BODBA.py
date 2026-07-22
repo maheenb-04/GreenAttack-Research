@@ -240,7 +240,11 @@ def bayesian_attack(image, max_query, init_query=5, noise='perlin', max_norm=16,
     log_level='error',
     save_to_file=False,
     save_to_api=False,
-    save_to_logger=False
+    save_to_logger=False,
+    country_iso_code='USA',
+    cloud_provider='gcp',
+    cloud_region='us-east1',
+    measure_power_secs=1
 )
     tracker.start()
     start_time = time.time()
