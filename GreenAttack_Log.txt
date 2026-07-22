@@ -98,3 +98,11 @@ GREENATTACK RESEARCH LOG
   Key finding 5: Gaussian succeeded in 1 query every time.
   Note: At queryBudgets=10 both approaches achieve 100% success.
   Phase 3 will determine if BO justifies extra energy at higher budgets.
+
+2026-07-22 15:56: Measurement limitation identified in pilot Gaussian results.
+  Issue: CodeCarbon default 15 sec sampling interval insufficient for 1 sec Gaussian runs.
+  Impact: Gaussian pilot CO2 values may be underestimated.
+  Gaussian remains in experiment as baseline - results noted with caveat.
+  Fix: measure_power_secs=1 already applied in BODBA.py for primary experiment.
+  Primary experiment Gaussian results will be accurate and reliable.
+  This limitation will be documented transparently in paper methodology section.
