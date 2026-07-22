@@ -86,3 +86,15 @@ GREENATTACK RESEARCH LOG
   Total planned: 14000 experiments
   Status: Running successfully
 >>>>>>> b47ae60cd9ef2d4f7289517bafea1517f61a25de
+
+2026-07-22 15:45: Pilot Study Results Analyzed.
+  Total experiments: 7000
+  Overall success rate: 100.0%
+  Total CO2 emitted: 0.02563719 kg
+  Key finding 1: All noise types achieved 100% success rate.
+  Key finding 2: Gaussian used 256x less energy than BO noises.
+  Key finding 3: Gabor was most energy efficient BO noise.
+  Key finding 4: All BO noises averaged 16 queries used.
+  Key finding 5: Gaussian succeeded in 1 query every time.
+  Note: At queryBudgets=10 both approaches achieve 100% success.
+  Phase 3 will determine if BO justifies extra energy at higher budgets.
