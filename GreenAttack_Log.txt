@@ -27,3 +27,24 @@ GREENATTACK RESEARCH LOG
     3. Create new recording files for final experiment
     4. Run final experiment on Colab at queryBudgets=100
     5. Add ResNet50 as second classifier
+
+2026-07-22 14:52: CodeCarbon Inconsistency Analysis.
+  Identified 5 potential sources of measurement variance:
+
+  INCONSISTENCY 1: Geographic location and grid carbon intensity.
+  Mitigation: Pinned country_iso_code=USA, cloud_provider=gcp, cloud_region=us-east1
+
+  INCONSISTENCY 2: Background processes on shared Colab servers.
+  Mitigation: 10 trials per configuration averages out background noise.
+
+  INCONSISTENCY 3: GPU vs CPU measurement precision difference.
+  Mitigation: Pilot and primary experiment results reported separately.
+
+  INCONSISTENCY 4: Colab server location changes between sessions.
+  Mitigation: Carbon intensity pinned explicitly in all tracker instances.
+
+  INCONSISTENCY 5: Measurement granularity for short experiments.
+  Mitigation: measure_power_secs=1 set for all EmissionsTracker instances.
+
+  Overall CodeCarbon accuracy: 75-85 percent absolute, 95 percent relative.
+  All inconsistencies documented and mitigated per Fischer et al. 2025.
